@@ -1,0 +1,57 @@
+{
+    "name": "teraone/matomo-client",
+    "description": "A Matomo API Client Library for Laravel",
+    "keywords": [
+        "teraone",
+        "matomo-client",
+        "piwik",
+        "matomo",
+        "laravel"
+    ],
+    "homepage": "https://github.com/teraone/matomo-client",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Stefan Gotre",
+            "email": "gotre@teraone.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Teraone\\MatomoClient\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Teraone\\MatomoClient\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teraone\\MatomoClient\\MatomoClientServiceProvider"
+            ],
+            "aliases": {
+                "MatomoClient": "Teraone\\MatomoClient\\MatomoClientFacade"
+            }
+        }
+    }
+}
