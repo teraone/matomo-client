@@ -1,10 +1,10 @@
-# Very short description of the package
+# A simple Matomo API Client for Laravel.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
 [![Total Downloads](https://img.shields.io/packagist/dt/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
 ![GitHub Actions](https://github.com/teraone/matomo-client/actions/workflows/main.yml/badge.svg)
 
-A simple Matomo API Client for Laravel. Based on [VisualAppeal/Matomo-PHP-API](https://github.com/VisualAppeal/Matomo-PHP-API)
+This package is based on [VisualAppeal/Matomo-PHP-API](https://github.com/VisualAppeal/Matomo-PHP-API)
 
 ## Installation
 
