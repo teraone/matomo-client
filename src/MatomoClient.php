@@ -24,6 +24,7 @@ use Teraone\MatomoClient\ApiModules\Feedback;
 use Teraone\MatomoClient\ApiModules\Goals;
 use Teraone\MatomoClient\ApiModules\LanguagesManager;
 use Teraone\MatomoClient\ApiModules\Live;
+use Teraone\MatomoClient\ApiModules\MediaAnalytics;
 use Teraone\MatomoClient\ApiModules\Metadata;
 use Teraone\MatomoClient\ApiModules\MobileMessaging;
 use Teraone\MatomoClient\ApiModules\MultiSites;
@@ -61,6 +62,7 @@ class MatomoClient {
         Goals,
         LanguagesManager,
         Live,
+        MediaAnalytics,
         Metadata,
         MobileMessaging,
         MultiSites,
@@ -114,15 +116,15 @@ class MatomoClient {
     /**
      * Set the period and range for the report.
      *
-     * @param Carbon $from
+     * @param \DateTime $from
      * @param string|null $period $default to self::PERIOD_DAY
-     * @param Carbon|null $until defaults to now() if $period is RANGE
+     * @param \DateTime|null $until defaults to now() if $period is RANGE
      *
      * @return $this
      */
-    public function setDate( Carbon $from, ?string $period = self::PERIOD_DAY, Carbon $until = null ): self {
+    public function setDate( \DateTime $from, ?string $period = self::PERIOD_DAY, \DateTime $until = null ): self {
 
-        $this->rangeStart = $from;
+        $this->rangeStart = Carbon::make($from);
 
         $this->setPeriod( $period );
         if ( $this->period === self::PERIOD_RANGE ) {
@@ -135,21 +137,14 @@ class MatomoClient {
                     throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
                 }
                 $this->setPeriod( self::PERIOD_RANGE );
-                $this->rangeEnd = $until;
+                $this->rangeEnd = Carbon::make($until);
             }
         }
 
         return $this;
     }
 
-    private function setPeriod( string $period ): self {
-        if ( ! in_array( $period, self::PERIODS ) ) {
-            throw  new InvalidArgumentException( 'Invalid Period given' );
-        }
-        $this->period = $period;
 
-        return $this;
-    }
 
     /**
      * @return int
@@ -161,8 +156,10 @@ class MatomoClient {
     /**
      * @param int $filterLimit
      */
-    public function setFilterLimit( int $filterLimit ): void {
+    public function setFilterLimit( int $filterLimit ): self {
         $this->filterLimit = $filterLimit;
+
+        return $this;
     }
 
     /**
@@ -174,9 +171,27 @@ class MatomoClient {
 
     /**
      * @param string $language
+     *
+     * @return MatomoClient
      */
-    public function setLanguage( string $language ): void {
+    public function setLanguage( string $language ): self {
         $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @param string $period
+     *
+     * @return $this
+     */
+    private function setPeriod( string $period ): self {
+        if ( ! in_array( $period, self::PERIODS ) ) {
+            throw  new InvalidArgumentException( 'Invalid Period given' );
+        }
+        $this->period = $period;
+
+        return $this;
     }
 
     /**
