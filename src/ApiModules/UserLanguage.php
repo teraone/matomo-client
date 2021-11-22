@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait UserLanguage {
     /**
@@ -17,10 +18,10 @@ trait UserLanguage {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserLanguage( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUserLanguage( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserLanguage.getLanguage', [
             'segment' => $segment,
         ], $optional );
@@ -32,10 +33,10 @@ trait UserLanguage {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserLanguageCode( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUserLanguageCode( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserLanguage.getLanguageCode', [
             'segment' => $segment,
         ], $optional );

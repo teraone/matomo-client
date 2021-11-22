@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait ExamplePlugin {
 
@@ -18,10 +19,10 @@ trait ExamplePlugin {
      * @param int $truth
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExamplePluginAnswerToLife( int $truth = 1, array $optional = [] ): array|bool|null {
+    public function getExamplePluginAnswerToLife( int $truth = 1, array $optional = [] ): Response {
         return $this->request( 'ExamplePlugin.getAnswerToLife', [
             'truth' => $truth,
         ], $optional );
@@ -33,10 +34,10 @@ trait ExamplePlugin {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExamplePluginReport( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getExamplePluginReport( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'ExamplePlugin.getExampleReport', [
             'segment' => $segment,
         ], $optional );

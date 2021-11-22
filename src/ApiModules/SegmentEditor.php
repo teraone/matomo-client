@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait SegmentEditor {
 
@@ -17,10 +18,10 @@ trait SegmentEditor {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function isUserCanAddNewSegment( array $optional = [] ): array|bool|null {
+    public function isUserCanAddNewSegment( array $optional = [] ): Response {
         return $this->request( 'SegmentEditor.isUserCanAddNewSegment', [], $optional );
     }
 
@@ -30,10 +31,10 @@ trait SegmentEditor {
      * @param int $idSegment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteSegment( int $idSegment, array $optional = [] ): array|bool|null {
+    public function deleteSegment( int $idSegment, array $optional = [] ): Response {
         return $this->request( 'SegmentEditor.delete', [
             'idSegment' => $idSegment,
         ], $optional );
@@ -49,7 +50,7 @@ trait SegmentEditor {
      * @param string $enableAllUsers
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function updateSegment(
@@ -59,7 +60,7 @@ trait SegmentEditor {
         string $autoArchive = '',
         string $enableAllUsers = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'SegmentEditor.update', [
             'idSegment'      => $idSegment,
             'name'           => $name,
@@ -78,10 +79,10 @@ trait SegmentEditor {
      * @param string $enableAllUsers
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function addSegment( string $name, string $definition, string $autoArchive = '', string $enableAllUsers = '', array $optional = [] ): array|bool|null {
+    public function addSegment( string $name, string $definition, string $autoArchive = '', string $enableAllUsers = '', array $optional = [] ): Response {
         return $this->request( 'SegmentEditor.add', [
             'name'           => $name,
             'definition'     => $definition,
@@ -96,10 +97,10 @@ trait SegmentEditor {
      * @param int $idSegment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSegment( int $idSegment, array $optional = [] ): array|bool|null {
+    public function getSegment( int $idSegment, array $optional = [] ): Response {
         return $this->request( 'SegmentEditor.get', [
             'idSegment' => $idSegment,
         ], $optional );
@@ -110,10 +111,10 @@ trait SegmentEditor {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAllSegments( array $optional = [] ): array|bool|null {
+    public function getAllSegments( array $optional = [] ): Response {
         return $this->request( 'SegmentEditor.getAll', [], $optional );
     }
 

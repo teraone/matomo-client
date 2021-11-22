@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Dashboard {
 
@@ -17,10 +18,10 @@ trait Dashboard {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDashboards( array $optional = [] ): array|bool|null {
+    public function getDashboards( array $optional = [] ): Response {
         return $this->request( 'Dashboard.getDashboards', [], $optional );
     }
 }

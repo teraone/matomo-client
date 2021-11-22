@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait SitesManager {
 
@@ -28,7 +29,7 @@ trait SitesManager {
      * @param string $disableCookies
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getJavascriptTag(
@@ -43,7 +44,7 @@ trait SitesManager {
         string $doNotTrack = '',
         string $disableCookies = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'SitesManager.getJavascriptTag', [
             'piwikUrl'                     => $matomoUrl,
             'mergeSubdomains'              => $mergeSubdomains,
@@ -67,7 +68,7 @@ trait SitesManager {
      * @param string $revenue
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getImageTrackingCode(
@@ -76,7 +77,7 @@ trait SitesManager {
         string $idGoal = '',
         string $revenue = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'SitesManager.getImageTrackingCode', [
             'piwikUrl'   => $matomoUrl,
             'actionName' => $actionName,
@@ -91,10 +92,10 @@ trait SitesManager {
      * @param string $group
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesFromGroup( string $group, array $optional = [] ): array|bool|null {
+    public function getSitesFromGroup( string $group, array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesFromGroup', [
             'group' => $group,
         ], $optional );
@@ -106,10 +107,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesGroups( array $optional = [] ): array|bool|null {
+    public function getSitesGroups( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesGroups', [], $optional );
     }
 
@@ -118,10 +119,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteInformation( array $optional = [] ): array|bool|null {
+    public function getSiteInformation( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSiteFromId', [], $optional );
     }
 
@@ -130,10 +131,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteUrls( array $optional = [] ): array|bool|null {
+    public function getSiteUrls( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSiteUrlsFromId', [], $optional );
     }
 
@@ -142,10 +143,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAllSites( array $optional = [] ): array|bool|null {
+    public function getAllSites( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getAllSites', [], $optional );
     }
 
@@ -154,10 +155,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAllSitesId( array $optional = [] ): array|bool|null {
+    public function getAllSitesId( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getAllSitesId', [], $optional );
     }
 
@@ -166,10 +167,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesWithAdminAccess( array $optional = [] ): array|bool|null {
+    public function getSitesWithAdminAccess( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesWithAdminAccess', [], $optional );
     }
 
@@ -178,10 +179,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesWithViewAccess( array $optional = [] ): array|bool|null {
+    public function getSitesWithViewAccess( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesWithViewAccess', [], $optional );
     }
 
@@ -191,10 +192,10 @@ trait SitesManager {
      * @param string $limit
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesWithAtLeastViewAccess( string $limit = '', array $optional = [] ): array|bool|null {
+    public function getSitesWithAtLeastViewAccess( string $limit = '', array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesWithAtLeastViewAccess', [
             'limit' => $limit,
         ], $optional );
@@ -205,10 +206,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesIdWithAdminAccess( array $optional = [] ): array|bool|null {
+    public function getSitesIdWithAdminAccess( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesIdWithAdminAccess', [], $optional );
     }
 
@@ -217,10 +218,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesIdWithViewAccess( array $optional = [] ): array|bool|null {
+    public function getSitesIdWithViewAccess( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesIdWithViewAccess', [], $optional );
     }
 
@@ -229,10 +230,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesIdWithAtLeastViewAccess( array $optional = [] ): array|bool|null {
+    public function getSitesIdWithAtLeastViewAccess( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesIdWithAtLeastViewAccess', [], $optional );
     }
 
@@ -242,10 +243,10 @@ trait SitesManager {
      * @param string $url
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesIdFromSiteUrl( string $url, array $optional = [] ): array|bool|null {
+    public function getSitesIdFromSiteUrl( string $url, array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSitesIdFromSiteUrl', [
             'url' => $url,
         ], $optional );
@@ -254,10 +255,10 @@ trait SitesManager {
     /**
      * Get a list of all available settings for a specific site.
      *
-     * @return array|bool|null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteSettings(): array|bool|null {
+    public function getSiteSettings(): Response {
         return $this->request( 'SitesManager.getSiteSettings' );
     }
 
@@ -288,7 +289,7 @@ trait SitesManager {
      * @param string $excludeUnknownUrls Track only URL matching one of website URLs
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function addSite(
@@ -310,7 +311,7 @@ trait SitesManager {
         string $type = '',
         string $excludeUnknownUrls = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'SitesManager.addSite', [
             'siteName'                 => $siteName,
             'urls'                     => $urls,
@@ -337,10 +338,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteSite( array $optional = [] ): array|bool|null {
+    public function deleteSite( array $optional = [] ): Response {
         return $this->request( 'SitesManager.deleteSite', [], $optional );
     }
 
@@ -350,10 +351,10 @@ trait SitesManager {
      * @param array $urls
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function addSiteAliasUrls( array $urls, array $optional = [] ): array|bool|null {
+    public function addSiteAliasUrls( array $urls, array $optional = [] ): Response {
         return $this->request( 'SitesManager.addSiteAliasUrls', [
             'urls' => $urls,
         ], $optional );
@@ -365,10 +366,10 @@ trait SitesManager {
      * @param array $urls
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setSiteAliasUrls( array $urls, array $optional = [] ): array|bool|null {
+    public function setSiteAliasUrls( array $urls, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setSiteAliasUrls', [
             'urls' => $urls,
         ], $optional );
@@ -380,10 +381,10 @@ trait SitesManager {
      * @param string $ipRange
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getIpsForRange( string $ipRange, array $optional = [] ): array|bool|null {
+    public function getIpsForRange( string $ipRange, array $optional = [] ): Response {
         return $this->request( 'SitesManager.getIpsForRange', [
             'ipRange' => $ipRange,
         ], $optional );
@@ -395,10 +396,10 @@ trait SitesManager {
      * @param array $excludedIps
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setExcludedIps( array $excludedIps, array $optional = [] ): array|bool|null {
+    public function setExcludedIps( array $excludedIps, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setGlobalExcludedIps', [
             'excludedIps' => $excludedIps,
         ], $optional );
@@ -411,10 +412,10 @@ trait SitesManager {
      * @param $searchCategoryParameters
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setGlobalSearchParameters( $searchKeywordParameters, $searchCategoryParameters, array $optional = [] ): array|bool|null {
+    public function setGlobalSearchParameters( $searchKeywordParameters, $searchCategoryParameters, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setGlobalSearchParameters ', [
             'searchKeywordParameters'  => $searchKeywordParameters,
             'searchCategoryParameters' => $searchCategoryParameters,
@@ -426,10 +427,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSearchKeywordParametersGlobal( array $optional = [] ): array|bool|null {
+    public function getSearchKeywordParametersGlobal( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSearchKeywordParametersGlobal', [], $optional );
     }
 
@@ -438,10 +439,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSearchCategoryParametersGlobal( array $optional = [] ): array|bool|null {
+    public function getSearchCategoryParametersGlobal( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getSearchCategoryParametersGlobal', [], $optional );
     }
 
@@ -450,10 +451,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExcludedParameters( array $optional = [] ): array|bool|null {
+    public function getExcludedParameters( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getExcludedQueryParametersGlobal', [], $optional );
     }
 
@@ -462,10 +463,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExcludedUserAgentsGlobal( array $optional = [] ): array|bool|null {
+    public function getExcludedUserAgentsGlobal( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getExcludedUserAgentsGlobal', [], $optional );
     }
 
@@ -475,10 +476,10 @@ trait SitesManager {
      * @param array $excludedUserAgents
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setGlobalExcludedUserAgents( array $excludedUserAgents, array $optional = [] ): array|bool|null {
+    public function setGlobalExcludedUserAgents( array $excludedUserAgents, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setGlobalExcludedUserAgents', [
             'excludedUserAgents' => $excludedUserAgents,
         ], $optional );
@@ -489,10 +490,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function isSiteSpecificUserAgentExcludeEnabled( array $optional = [] ): array|bool|null {
+    public function isSiteSpecificUserAgentExcludeEnabled( array $optional = [] ): Response {
         return $this->request( 'SitesManager.isSiteSpecificUserAgentExcludeEnabled', [], $optional );
     }
 
@@ -502,10 +503,10 @@ trait SitesManager {
      * @param int $enabled
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setSiteSpecificUserAgentExcludeEnabled( int $enabled, array $optional = [] ): array|bool|null {
+    public function setSiteSpecificUserAgentExcludeEnabled( int $enabled, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setSiteSpecificUserAgentExcludeEnabled', [
             'enabled' => $enabled,
         ], $optional );
@@ -516,10 +517,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeepURLFragmentsGlobal( array $optional = [] ): array|bool|null {
+    public function getKeepURLFragmentsGlobal( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getKeepURLFragmentsGlobal', [], $optional );
     }
 
@@ -529,10 +530,10 @@ trait SitesManager {
      * @param int $enabled
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setKeepURLFragmentsGlobal( int $enabled, array $optional = [] ): array|bool|null {
+    public function setKeepURLFragmentsGlobal( int $enabled, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setKeepURLFragmentsGlobal', [
             'enabled' => $enabled,
         ], $optional );
@@ -544,10 +545,10 @@ trait SitesManager {
      * @param array $excludedQueryParameters
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setExcludedParameters( array $excludedQueryParameters, array $optional = [] ): array|bool|null {
+    public function setExcludedParameters( array $excludedQueryParameters, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setGlobalExcludedQueryParameters', [
             'excludedQueryParameters' => $excludedQueryParameters,
         ], $optional );
@@ -558,10 +559,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExcludedIps( array $optional = [] ): array|bool|null {
+    public function getExcludedIps( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getExcludedIpsGlobal', [], $optional );
     }
 
@@ -570,10 +571,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultCurrency( array $optional = [] ): array|bool|null {
+    public function getDefaultCurrency( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getDefaultCurrency', [], $optional );
     }
 
@@ -583,10 +584,10 @@ trait SitesManager {
      * @param string $defaultCurrency
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setDefaultCurrency( string $defaultCurrency, array $optional = [] ): array|bool|null {
+    public function setDefaultCurrency( string $defaultCurrency, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setDefaultCurrency', [
             'defaultCurrency' => $defaultCurrency,
         ], $optional );
@@ -597,10 +598,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultTimezone( array $optional = [] ): array|bool|null {
+    public function getDefaultTimezone( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getDefaultTimezone', [], $optional );
     }
 
@@ -610,10 +611,10 @@ trait SitesManager {
      * @param string $defaultTimezone
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setDefaultTimezone( string $defaultTimezone, array $optional = [] ): array|bool|null {
+    public function setDefaultTimezone( string $defaultTimezone, array $optional = [] ): Response {
         return $this->request( 'SitesManager.setDefaultTimezone', [
             'defaultTimezone' => $defaultTimezone,
         ], $optional );
@@ -640,7 +641,7 @@ trait SitesManager {
      * @param string $settings
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function updateSite(
@@ -661,7 +662,7 @@ trait SitesManager {
         string $type = '',
         string $settings = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'SitesManager.updateSite', [
             'siteName'                 => $siteName,
             'urls'                     => $urls,
@@ -687,10 +688,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCurrencyList( array $optional = [] ): array|bool|null {
+    public function getCurrencyList( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getCurrencyList', [], $optional );
     }
 
@@ -699,10 +700,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCurrencySymbols( array $optional = [] ): array|bool|null {
+    public function getCurrencySymbols( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getCurrencySymbols', [], $optional );
     }
 
@@ -711,10 +712,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTimezonesList( array $optional = [] ): array|bool|null {
+    public function getTimezonesList( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getTimezonesList', [], $optional );
     }
 
@@ -723,10 +724,10 @@ trait SitesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUniqueSiteTimezones( array $optional = [] ): array|bool|null {
+    public function getUniqueSiteTimezones( array $optional = [] ): Response {
         return $this->request( 'SitesManager.getUniqueSiteTimezones', [], $optional );
     }
 
@@ -737,10 +738,10 @@ trait SitesManager {
      * @param string $newGroupName
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function renameGroup( string $oldGroupName, string $newGroupName, array $optional = [] ): array|bool|null {
+    public function renameGroup( string $oldGroupName, string $newGroupName, array $optional = [] ): Response {
         return $this->request( 'SitesManager.renameGroup', [
             'oldGroupName' => $oldGroupName,
             'newGroupName' => $newGroupName,
@@ -753,10 +754,10 @@ trait SitesManager {
      * @param string $pattern
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getPatternMatchSites( string $pattern, array $optional = [] ): array|bool|null {
+    public function getPatternMatchSites( string $pattern, array $optional = [] ): Response {
         return $this->request( 'SitesManager.getPatternMatchSites', [
             'pattern' => $pattern,
         ], $optional );

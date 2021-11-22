@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Transitions {
 
@@ -20,10 +21,10 @@ trait Transitions {
      * @param string $limitBeforeGrouping
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTransitionsForPageTitle( $pageTitle, string $segment = '', string $limitBeforeGrouping = '', array $optional = [] ): array|bool|null {
+    public function getTransitionsForPageTitle( $pageTitle, string $segment = '', string $limitBeforeGrouping = '', array $optional = [] ): Response {
         return $this->request( 'Transitions.getTransitionsForPageTitle', [
             'pageTitle'           => $pageTitle,
             'segment'             => $segment,
@@ -39,10 +40,10 @@ trait Transitions {
      * @param string $limitBeforeGrouping
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTransitionsForPageUrl( $pageUrl, string $segment = '', string $limitBeforeGrouping = '', array $optional = [] ): array|bool|null {
+    public function getTransitionsForPageUrl( $pageUrl, string $segment = '', string $limitBeforeGrouping = '', array $optional = [] ): Response {
         return $this->request( 'Transitions.getTransitionsForPageTitle', [
             'pageUrl'             => $pageUrl,
             'segment'             => $segment,
@@ -61,7 +62,7 @@ trait Transitions {
      * @param string $returnNormalizedUrls
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getTransitionsForAction(
@@ -72,7 +73,7 @@ trait Transitions {
         string $parts = 'all',
         string $returnNormalizedUrls = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'Transitions.getTransitionsForAction', [
             'actionName'           => $actionName,
             'actionType'           => $actionType,
@@ -88,10 +89,10 @@ trait Transitions {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTransitionsTranslations( array $optional = [] ): array|bool|null {
+    public function getTransitionsTranslations( array $optional = [] ): Response {
         return $this->request( 'Transitions.getTranslations', [], $optional );
     }
 }

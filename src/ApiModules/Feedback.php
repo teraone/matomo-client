@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Feedback {
 
@@ -20,10 +21,10 @@ trait Feedback {
      * @param string $message
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function sendFeedbackForFeature( string $featureName, string $like, string $message = '', array $optional = [] ): array|bool|null {
+    public function sendFeedbackForFeature( string $featureName, string $like, string $message = '', array $optional = [] ): Response {
         return $this->request( 'Feedback.sendFeedbackForFeature', [
             'featureName' => $featureName,
             'like'        => $like,

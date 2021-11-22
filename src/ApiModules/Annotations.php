@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Annotations {
 
@@ -19,10 +20,10 @@ trait Annotations {
      * @param int $starred
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function addAnnotation( string $note, int $starred = 0, array $optional = [] ): array|bool|null {
+    public function addAnnotation( string $note, int $starred = 0, array $optional = [] ): Response {
         return $this->request( 'Annotations.add', [
             'note'    => $note,
             'starred' => $starred,
@@ -37,10 +38,10 @@ trait Annotations {
      * @param string $starred
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function saveAnnotation( int $idNote, string $note = '', string $starred = '', array $optional = [] ): array|bool|null {
+    public function saveAnnotation( int $idNote, string $note = '', string $starred = '', array $optional = [] ): Response {
         return $this->request( 'Annotations.save', [
             'idNote'  => $idNote,
             'note'    => $note,
@@ -54,10 +55,10 @@ trait Annotations {
      * @param int $idNote
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteAnnotation( int $idNote, array $optional = [] ): array|bool|null {
+    public function deleteAnnotation( int $idNote, array $optional = [] ): Response {
         return $this->request( 'Annotations.delete', [
             'idNote' => $idNote,
         ], $optional );
@@ -68,10 +69,10 @@ trait Annotations {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteAllAnnotations( array $optional = [] ): array|bool|null {
+    public function deleteAllAnnotations( array $optional = [] ): Response {
         return $this->request( 'Annotations.deleteAll', [], $optional );
     }
 
@@ -81,10 +82,10 @@ trait Annotations {
      * @param int $idNote
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAnnotation( int $idNote, array $optional = [] ): array|bool|null {
+    public function getAnnotation( int $idNote, array $optional = [] ): Response {
         return $this->request( 'Annotations.get', [
             'idNote' => $idNote,
         ], $optional );
@@ -96,10 +97,10 @@ trait Annotations {
      * @param string $lastN
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAllAnnotation( string $lastN = '', array $optional = [] ): array|bool|null {
+    public function getAllAnnotation( string $lastN = '', array $optional = [] ): Response {
         return $this->request( 'Annotations.getAll', [
             'lastN' => $lastN,
         ], $optional );
@@ -112,10 +113,10 @@ trait Annotations {
      * @param string $getAnnotationText
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAnnotationCountForDates( int $lastN, string $getAnnotationText, array $optional = [] ): array|bool|null {
+    public function getAnnotationCountForDates( int $lastN, string $getAnnotationText, array $optional = [] ): Response {
         return $this->request( 'Annotations.getAnnotationCountForDates', [
             'lastN'             => $lastN,
             'getAnnotationText' => $getAnnotationText

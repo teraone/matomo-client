@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Overlay {
 
@@ -17,10 +18,10 @@ trait Overlay {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOverlayTranslations( array $optional = [] ): array|bool|null {
+    public function getOverlayTranslations( array $optional = [] ): Response {
         return $this->request( 'Overlay.getTranslations', [], $optional );
     }
 
@@ -29,10 +30,10 @@ trait Overlay {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOverlayExcludedQueryParameters( array $optional = [] ): array|bool|null {
+    public function getOverlayExcludedQueryParameters( array $optional = [] ): Response {
         return $this->request( 'Overlay.getExcludedQueryParameters', [], $optional );
     }
 
@@ -42,10 +43,10 @@ trait Overlay {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOverlayFollowingPages( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getOverlayFollowingPages( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Overlay.getFollowingPages', [
             'segment' => $segment,
         ], $optional );

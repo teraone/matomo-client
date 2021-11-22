@@ -3,6 +3,7 @@
 namespace Teraone\MatomoClient\ApiModules;
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Actions {
 
@@ -208,10 +209,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteSearchKeywords( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSiteSearchKeywords( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getSiteSearchKeywords', [
             'segment' => $segment,
         ], $optional );
@@ -223,10 +224,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteSearchNoResultKeywords( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSiteSearchNoResultKeywords( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getSiteSearchNoResultKeywords', [
             'segment' => $segment,
         ], $optional );
@@ -238,10 +239,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSiteSearchCategories( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSiteSearchCategories( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getSiteSearchCategories', [
             'segment' => $segment,
         ], $optional );
@@ -253,10 +254,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    protected function getPageUrls( string $segment = '', array $optional = [] ): array|bool|null {
+    protected function getPageUrls( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageUrls', [
             'segment' => $segment,
         ], $optional );
@@ -283,10 +284,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    protected function getExitPageUrls( string $segment = '', array $optional = [] ): array|bool|null {
+    protected function getExitPageUrls( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getExitPageUrls', [
             'segment' => $segment,
         ], $optional );

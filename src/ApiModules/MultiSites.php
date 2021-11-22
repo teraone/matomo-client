@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait MultiSites {
 
@@ -19,10 +20,10 @@ trait MultiSites {
      * @param string $enhanced
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMultiSites( string $segment = '', string $enhanced = '', array $optional = [] ): array|bool|null {
+    public function getMultiSites( string $segment = '', string $enhanced = '', array $optional = [] ): Response {
         return $this->request( 'MultiSites.getAll', [
             'segment'  => $segment,
             'enhanced' => $enhanced,
@@ -36,10 +37,10 @@ trait MultiSites {
      * @param string $enhanced
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOne( string $segment = '', string $enhanced = '', array $optional = [] ): array|bool|null {
+    public function getOne( string $segment = '', string $enhanced = '', array $optional = [] ): Response {
         return $this->request( 'MultiSites.getOne', [
             'segment'  => $segment,
             'enhanced' => $enhanced,

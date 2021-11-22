@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait DevicePlugins {
 
@@ -18,10 +19,10 @@ trait DevicePlugins {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserPlugin( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUserPlugin( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicePlugins.getPlugin', [
             'segment' => $segment,
         ], $optional );

@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Resolution {
 
@@ -19,10 +20,10 @@ trait Resolution {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getResolution( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getResolution( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Resolution.getResolution', [
             'segment' => $segment,
         ], $optional );
@@ -34,10 +35,10 @@ trait Resolution {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getConfiguration( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getConfiguration( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Resolution.getConfiguration', [
             'segment' => $segment,
         ], $optional );

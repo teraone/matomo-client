@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait ScheduledReports {
 
@@ -26,7 +27,7 @@ trait ScheduledReports {
      * @param string $idSegment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function addReport(
@@ -39,7 +40,7 @@ trait ScheduledReports {
         string $parameters,
         string $idSegment = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'ScheduledReports.addReport', [
             'description'  => $description,
             'period'       => $period,
@@ -66,7 +67,7 @@ trait ScheduledReports {
      * @param string $idSegment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function updateReport(
@@ -80,7 +81,7 @@ trait ScheduledReports {
         string $parameters,
         string $idSegment = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'ScheduledReports.updateReport', [
             'idReport'     => $idReport,
             'description'  => $description,
@@ -100,10 +101,10 @@ trait ScheduledReports {
      * @param int $idReport
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteReport( int $idReport, array $optional = [] ): array|bool|null {
+    public function deleteReport( int $idReport, array $optional = [] ): Response {
         return $this->request( 'ScheduledReports.deleteReport', [
             'idReport' => $idReport,
         ], $optional );
@@ -117,7 +118,7 @@ trait ScheduledReports {
      * @param string $idSegment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getReports(
@@ -125,7 +126,7 @@ trait ScheduledReports {
         string $ifSuperUserReturnOnlySuperUserReports = '',
         string $idSegment = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'ScheduledReports.getReports', [
             'idReport'                              => $idReport,
             'ifSuperUserReturnOnlySuperUserReports' => $ifSuperUserReturnOnlySuperUserReports,
@@ -143,7 +144,7 @@ trait ScheduledReports {
      * @param string $parameters
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function generateReport(
@@ -153,7 +154,7 @@ trait ScheduledReports {
         string $reportFormat = '',
         string $parameters = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'ScheduledReports.generateReport', [
             'idReport'     => $idReport,
             'language'     => $language,
@@ -170,10 +171,10 @@ trait ScheduledReports {
      * @param string $force
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function sendReport( int $idReport, string $force = '', array $optional = [] ): array|bool|null {
+    public function sendReport( int $idReport, string $force = '', array $optional = [] ): Response {
         return $this->request( 'ScheduledReports.sendReport', [
             'idReport' => $idReport,
             'force'    => $force,

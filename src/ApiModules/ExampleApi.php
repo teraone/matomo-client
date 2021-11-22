@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait ExampleApi {
 
@@ -18,10 +19,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleMatomoVersion( array $optional = [] ): array|bool|null {
+    public function getExampleMatomoVersion( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getMatomoVersion', [], $optional );
     }
 
@@ -30,10 +31,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleAnswerToLife( array $optional = [] ): array|bool|null {
+    public function getExampleAnswerToLife( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getAnswerToLife', [], $optional );
     }
 
@@ -42,10 +43,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleObject( array $optional = [] ): array|bool|null {
+    public function getExampleObject( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getObject', [], $optional );
     }
 
@@ -56,10 +57,10 @@ trait ExampleApi {
      * @param int $b
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleSum( int $a = 0, int $b = 0, array $optional = [] ): array|bool|null {
+    public function getExampleSum( int $a = 0, int $b = 0, array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getSum', [
             'a' => $a,
             'b' => $b,
@@ -71,10 +72,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleNull( array $optional = [] ): array|bool|null {
+    public function getExampleNull( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getNull', [], $optional );
     }
 
@@ -83,10 +84,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleDescriptionArray( array $optional = [] ): array|bool|null {
+    public function getExampleDescriptionArray( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getDescriptionArray', [], $optional );
     }
 
@@ -95,10 +96,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleCompetitionDatatable( array $optional = [] ): array|bool|null {
+    public function getExampleCompetitionDatatable( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getCompetitionDatatable', [], $optional );
     }
 
@@ -108,10 +109,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleMoreInformationAnswerToLife( array $optional = [] ): array|bool|null {
+    public function getExampleMoreInformationAnswerToLife( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getMoreInformationAnswerToLife', [], $optional );
     }
 
@@ -120,10 +121,10 @@ trait ExampleApi {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getExampleMultiArray( array $optional = [] ): array|bool|null {
+    public function getExampleMultiArray( array $optional = [] ): Response {
         return $this->request( 'ExampleAPI.getMultiArray', [], $optional );
     }
 

@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Contents {
 
@@ -18,10 +19,10 @@ trait Contents {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getContentNames( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getContentNames( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Contents.getContentNames', [
             'segment' => $segment,
         ], $optional );
@@ -33,10 +34,10 @@ trait Contents {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getContentPieces( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getContentPieces( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Contents.getContentPieces', [
             'segment' => $segment,
         ], $optional );

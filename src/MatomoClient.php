@@ -2,7 +2,9 @@
 
 namespace Teraone\MatomoClient;
 
+use DateTime;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -116,13 +118,13 @@ class MatomoClient {
     /**
      * Set the period and range for the report.
      *
-     * @param \DateTime $from
+     * @param DateTime $from
      * @param string|null $period $default to self::PERIOD_DAY
-     * @param \DateTime|null $until defaults to now() if $period is RANGE
+     * @param DateTime|null $until defaults to now() if $period is RANGE
      *
      * @return $this
      */
-    public function setDate( \DateTime $from, ?string $period = self::PERIOD_DAY, \DateTime $until = null ): self {
+    public function setDate( DateTime $from, ?string $period = self::PERIOD_DAY, DateTime $until = null ): self {
 
         $this->rangeStart = Carbon::make($from);
 
@@ -155,6 +157,8 @@ class MatomoClient {
 
     /**
      * @param int $filterLimit
+     *
+     * @return MatomoClient
      */
     public function setFilterLimit( int $filterLimit ): self {
         $this->filterLimit = $filterLimit;
@@ -201,12 +205,12 @@ class MatomoClient {
      * @param array $params Query parameters
      * @param array $optional Optional arguments for this api call
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      * @throws RequestException
      * @throws RequestException
      */
-    private function request( string $method, array $params = [], array $optional = [] ): array|bool|null {
+    private function request( string $method, array $params = [], array $optional = [] ): Response {
         $url = $this->parseUrl( $method, $params + $optional );
 
         if ( config( 'matomo-client.log_enabled' ) ) {
@@ -244,7 +248,7 @@ class MatomoClient {
 
         $response->throw();
 
-        return $response->json();
+        return $response;
 
     }
 

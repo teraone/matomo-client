@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait CustomDimensions {
 
@@ -20,10 +21,10 @@ trait CustomDimensions {
      * @param int $idDimension
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCustomDimension( int $idDimension, array $optional = [] ): array|bool|null {
+    public function getCustomDimension( int $idDimension, array $optional = [] ): Response {
         return $this->request( 'CustomDimensions.getCustomDimension', [
             'idDimension' => $idDimension,
         ], $optional );
@@ -42,10 +43,10 @@ trait CustomDimensions {
      * @param int $active '0' if dimension should be inactive, '1' if dimension should be active
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function configureNewCustomDimension( string $name, string $scope, int $active, array $optional = [] ): array|bool|null {
+    public function configureNewCustomDimension( string $name, string $scope, int $active, array $optional = [] ): Response {
         return $this->request( 'CustomDimensions.configureNewCustomDimension', [
             'name'   => $name,
             'scope'  => $scope,
@@ -62,10 +63,10 @@ trait CustomDimensions {
      * @param int $active '0' if dimension should be inactive, '1' if dimension should be active
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function configureExistingCustomDimension( int $idDimension, string $name, int $active, array $optional = [] ): array|bool|null {
+    public function configureExistingCustomDimension( int $idDimension, string $name, int $active, array $optional = [] ): Response {
         return $this->request( 'CustomDimensions.configureExistingCustomDimension', [
             'idDimension' => $idDimension,
             'name'        => $name,
@@ -74,10 +75,10 @@ trait CustomDimensions {
     }
 
     /**
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getConfiguredCustomDimensions(): array|bool|null {
+    public function getConfiguredCustomDimensions(): Response {
         return $this->request( 'CustomDimensions.getConfiguredCustomDimensions', [
         ] );
     }
@@ -87,10 +88,10 @@ trait CustomDimensions {
      * `CustomDimensions.configureNewCustomDimension`. The response also contains information whether more Custom
      * Dimensions can be created or not. Requires at least Admin access for the specified website.
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAvailableScopes(): array|bool|null {
+    public function getAvailableScopes(): Response {
         return $this->request( 'CustomDimensions.getAvailableScopes', [
         ] );
     }
@@ -99,10 +100,10 @@ trait CustomDimensions {
      * Get a list of all available dimensions that can be used in an extraction. Requires at least Admin access
      * to one website.
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAvailableExtractionDimensions(): array|bool|null {
+    public function getAvailableExtractionDimensions(): Response {
         return $this->request( 'CustomDimensions.getAvailableExtractionDimensions', [
         ] );
     }

@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait CustomAlerts {
 
@@ -18,10 +19,10 @@ trait CustomAlerts {
      * @param int $idAlert
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAlert( int $idAlert, array $optional = [] ): array|bool|null {
+    public function getAlert( int $idAlert, array $optional = [] ): Response {
         return $this->request( 'CustomAlerts.getAlert', [
             'idAlert' => $idAlert,
         ], $optional );
@@ -34,10 +35,10 @@ trait CustomAlerts {
      * @param string $subPeriodN
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getValuesForAlertInPast( int $idAlert, string $subPeriodN, array $optional = [] ): array|bool|null {
+    public function getValuesForAlertInPast( int $idAlert, string $subPeriodN, array $optional = [] ): Response {
         return $this->request( 'CustomAlerts.getValuesForAlertInPast', [
             'idAlert'    => $idAlert,
             'subPeriodN' => $subPeriodN,
@@ -51,10 +52,10 @@ trait CustomAlerts {
      * @param string $ifSuperUserReturnAllAlerts
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAlerts( string $idSites, string $ifSuperUserReturnAllAlerts = '', array $optional = [] ): array|bool|null {
+    public function getAlerts( string $idSites, string $ifSuperUserReturnAllAlerts = '', array $optional = [] ): Response {
         return $this->request( 'CustomAlerts.getAlerts', [
             'idSites'                    => $idSites,
             'ifSuperUserReturnAllAlerts' => $ifSuperUserReturnAllAlerts,
@@ -78,7 +79,7 @@ trait CustomAlerts {
      * @param string $reportValue
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function addAlert(
@@ -95,7 +96,7 @@ trait CustomAlerts {
         string $reportCondition = '',
         string $reportValue = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'CustomAlerts.addAlert', [
             'name'             => $name,
             'idSites'          => $idSites,
@@ -130,7 +131,7 @@ trait CustomAlerts {
      * @param string $reportValue
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function editAlert(
@@ -148,7 +149,7 @@ trait CustomAlerts {
         string $reportCondition = '',
         string $reportValue = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'CustomAlerts.editAlert', [
             'idAlert'          => $idAlert,
             'name'             => $name,
@@ -172,10 +173,10 @@ trait CustomAlerts {
      * @param int $idAlert
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteAlert( int $idAlert, array $optional = [] ): array|bool|null {
+    public function deleteAlert( int $idAlert, array $optional = [] ): Response {
         return $this->request( 'CustomAlerts.deleteAlert', [
             'idAlert' => $idAlert,
         ], $optional );
@@ -187,10 +188,10 @@ trait CustomAlerts {
      * @param array $idSites
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTriggeredAlerts( array $idSites, array $optional = [] ): array|bool|null {
+    public function getTriggeredAlerts( array $idSites, array $optional = [] ): Response {
         return $this->request( 'CustomAlerts.getTriggeredAlerts', [
             'idSites' => $idSites,
         ], $optional );

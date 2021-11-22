@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait UserCountry {
 
@@ -19,10 +20,10 @@ trait UserCountry {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCountry( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCountry( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getCountry', [
             'segment' => $segment,
         ], $optional );
@@ -31,10 +32,10 @@ trait UserCountry {
     /**
      * Get a list of used country codes to country names
      *
-     * @return array|bool|null
+     * @return Response
      * @throws RequestException
      */
-    public function getCountryCodeMapping(): array|bool|null {
+    public function getCountryCodeMapping(): Response {
         return $this->request( 'UserCountry.getCountryCodeMapping' );
     }
 
@@ -44,10 +45,10 @@ trait UserCountry {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getContinent( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getContinent( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getContinent', [
             'segment' => $segment,
         ], $optional );
@@ -59,10 +60,10 @@ trait UserCountry {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getRegion( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getRegion( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getRegion', [
             'segment' => $segment,
         ], $optional );
@@ -74,10 +75,10 @@ trait UserCountry {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCity( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCity( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getCity', [
             'segment' => $segment,
         ], $optional );
@@ -90,10 +91,10 @@ trait UserCountry {
      * @param string $provider
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getLocationFromIP( string $ip, string $provider = '', array $optional = [] ): array|bool|null {
+    public function getLocationFromIP( string $ip, string $provider = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getLocationFromIP', [
             'ip'       => $ip,
             'provider' => $provider,
@@ -106,10 +107,10 @@ trait UserCountry {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCountryNumber( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCountryNumber( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserCountry.getNumberOfDistinctCountries', [
             'segment' => $segment,
         ], $optional );

@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait VisitFrequency {
 
@@ -20,10 +21,10 @@ trait VisitFrequency {
      * @param string $columns
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getVisitFrequency( string $segment = '', string $columns = '', array $optional = [] ): array|bool|null {
+    public function getVisitFrequency( string $segment = '', string $columns = '', array $optional = [] ): Response {
         return $this->request( 'VisitFrequency.get', [
             'segment' => $segment,
             'columns' => $columns,

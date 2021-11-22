@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Referrers {
 
@@ -20,10 +21,10 @@ trait Referrers {
      * @param string $typeReferrer
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getReferrerType( string $segment = '', string $typeReferrer = '', array $optional = [] ): array|bool|null {
+    public function getReferrerType( string $segment = '', string $typeReferrer = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getReferrerType', [
             'segment'      => $segment,
             'typeReferrer' => $typeReferrer,
@@ -36,10 +37,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAllReferrers( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAllReferrers( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getAll', [
             'segment' => $segment,
         ], $optional );
@@ -51,10 +52,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeywords( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getKeywords( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getKeywords', [
             'segment' => $segment,
         ], $optional );
@@ -66,10 +67,10 @@ trait Referrers {
      * @param string $url
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeywordsForPageUrl( string $url, array $optional = [] ): array|bool|null {
+    public function getKeywordsForPageUrl( string $url, array $optional = [] ): Response {
         return $this->request( 'Referrers.getKeywordsForPageUrl', [
             'url' => $url,
         ], $optional );
@@ -81,10 +82,10 @@ trait Referrers {
      * @param string $title
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeywordsForPageTitle( string $title, array $optional = [] ): array|bool|null {
+    public function getKeywordsForPageTitle( string $title, array $optional = [] ): Response {
         return $this->request( 'Referrers.getKeywordsForPageTitle', [
             'title' => $title,
         ], $optional );
@@ -97,10 +98,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSearchEnginesFromKeywordId( $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSearchEnginesFromKeywordId( $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getSearchEnginesFromKeywordId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment,
@@ -113,10 +114,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSearchEngines( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSearchEngines( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getSearchEngines', [
             'segment' => $segment,
         ], $optional );
@@ -129,10 +130,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeywordsFromSearchEngineId( string $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getKeywordsFromSearchEngineId( string $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getKeywordsFromSearchEngineId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment,
@@ -145,10 +146,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCampaigns( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCampaigns( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getCampaigns', [
             'segment' => $segment,
         ], $optional );
@@ -161,10 +162,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getKeywordsFromCampaignId( $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getKeywordsFromCampaignId( $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getKeywordsFromCampaignId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment,
@@ -178,10 +179,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingName( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingName( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getName', [
             'segment' => $segment,
         ], $optional );
@@ -194,10 +195,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingKeywordContentFromNameId( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingKeywordContentFromNameId( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getKeywordContentFromNameId', [
             'segment' => $segment
         ], $optional );
@@ -210,10 +211,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingKeyword( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingKeyword( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getKeyword', [
             'segment' => $segment
         ], $optional );
@@ -226,10 +227,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingSource( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingSource( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getSource', [
             'segment' => $segment
         ], $optional );
@@ -242,10 +243,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingMedium( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingMedium( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getMedium', [
             'segment' => $segment
         ], $optional );
@@ -258,10 +259,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingContent( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingContent( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getContent', [
             'segment' => $segment
         ], $optional );
@@ -274,10 +275,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingSourceMedium( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingSourceMedium( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getSourceMedium', [
             'segment' => $segment
         ], $optional );
@@ -291,10 +292,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAdvancedCampaignReportingNameFromSourceMediumId( int $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getAdvancedCampaignReportingNameFromSourceMediumId( int $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'AdvancedCampaignReporting.getNameFromSourceMediumId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment
@@ -307,10 +308,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getWebsites( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getWebsites( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getWebsites', [
             'segment' => $segment,
         ], $optional );
@@ -323,10 +324,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUrlsFromWebsiteId( string $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUrlsFromWebsiteId( string $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getUrlsFromWebsiteId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment,
@@ -339,10 +340,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSocials( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSocials( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getSocials', [
             'segment' => $segment,
         ], $optional );
@@ -354,10 +355,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUrlsForSocial( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUrlsForSocial( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getUrlsForSocial', [
             'segment' => $segment,
         ], $optional );
@@ -369,10 +370,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getNumberOfSearchEngines( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getNumberOfSearchEngines( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getNumberOfDistinctSearchEngines', [
             'segment' => $segment,
         ], $optional );
@@ -384,10 +385,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getNumberOfKeywords( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getNumberOfKeywords( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getNumberOfDistinctKeywords', [
             'segment' => $segment,
         ], $optional );
@@ -399,10 +400,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getNumberOfCampaigns( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getNumberOfCampaigns( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getNumberOfDistinctCampaigns', [
             'segment' => $segment,
         ], $optional );
@@ -414,10 +415,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getNumberOfWebsites( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getNumberOfWebsites( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getNumberOfDistinctWebsites', [
             'segment' => $segment,
         ], $optional );
@@ -429,10 +430,10 @@ trait Referrers {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getNumberOfWebsitesUrls( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getNumberOfWebsitesUrls( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Referrers.getNumberOfDistinctWebsitesUrls', [
             'segment' => $segment,
         ], $optional );

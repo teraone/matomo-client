@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Goals {
 
@@ -18,10 +19,10 @@ trait Goals {
      *
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getGoals( array $optional = [] ): bool|array {
+    public function getGoals( array $optional = [] ): Response {
         return $this->request( 'Goals.getGoals', [], $optional );
     }
 
@@ -37,7 +38,7 @@ trait Goals {
      * @param string $allowMultipleConversionsPerVisit
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
     public function addGoal(
@@ -49,7 +50,7 @@ trait Goals {
         string $revenue = '',
         string $allowMultipleConversionsPerVisit = '',
         array $optional = []
-    ): bool|array {
+    ): Response {
         return $this->request( 'Goals.addGoal', [
             'name'                             => $name,
             'matchAttribute'                   => $matchAttribute,
@@ -74,7 +75,7 @@ trait Goals {
      * @param string $allowMultipleConversionsPerVisit
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
     public function updateGoal(
@@ -87,7 +88,7 @@ trait Goals {
         string $revenue = '',
         string $allowMultipleConversionsPerVisit = '',
         array $optional = []
-    ): bool|array {
+    ): Response {
         return $this->request( 'Goals.updateGoal', [
             'idGoal'                           => $idGoal,
             'name'                             => $name,
@@ -106,10 +107,10 @@ trait Goals {
      * @param int $idGoal
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function deleteGoal( int $idGoal, array $optional = [] ): bool|array {
+    public function deleteGoal( int $idGoal, array $optional = [] ): Response {
         return $this->request( 'Goals.deleteGoal', [
             'idGoal' => $idGoal,
         ], $optional );
@@ -121,10 +122,10 @@ trait Goals {
      * @param string $abandonedCarts
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getItemsSku( string $abandonedCarts, array $optional = [] ): bool|array {
+    public function getItemsSku( string $abandonedCarts, array $optional = [] ): Response {
         return $this->request( 'Goals.getItemsSku', [
             'abandonedCarts' => $abandonedCarts,
         ], $optional );
@@ -136,10 +137,10 @@ trait Goals {
      * @param bool $abandonedCarts
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getItemsName( bool $abandonedCarts, array $optional = [] ): bool|array {
+    public function getItemsName( bool $abandonedCarts, array $optional = [] ): Response {
         return $this->request( 'Goals.getItemsName', [
             'abandonedCarts' => $abandonedCarts,
         ], $optional );
@@ -151,10 +152,10 @@ trait Goals {
      * @param bool $abandonedCarts
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getItemsCategory( bool $abandonedCarts, array $optional = [] ): bool|array {
+    public function getItemsCategory( bool $abandonedCarts, array $optional = [] ): Response {
         return $this->request( 'Goals.getItemsCategory', [
             'abandonedCarts' => $abandonedCarts,
         ], $optional );
@@ -168,10 +169,10 @@ trait Goals {
      * @param array $columns
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getGoal( string $segment = '', string $idGoal = '', array $columns = [], array $optional = [] ): bool|array {
+    public function getGoal( string $segment = '', string $idGoal = '', array $columns = [], array $optional = [] ): Response {
         return $this->request( 'Goals.get', [
             'segment' => $segment,
             'idGoal'  => $idGoal,
@@ -186,10 +187,10 @@ trait Goals {
      * @param string $idGoal
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getDaysToConversion( string $segment = '', string $idGoal = '', array $optional = [] ): bool|array {
+    public function getDaysToConversion( string $segment = '', string $idGoal = '', array $optional = [] ): Response {
         return $this->request( 'Goals.getDaysToConversion', [
             'segment' => $segment,
             'idGoal'  => $idGoal,
@@ -203,10 +204,10 @@ trait Goals {
      * @param string $idGoal
      * @param array $optional
      *
-     * @return bool|array
+     * @return Response
      * @throws RequestException
      */
-    public function getVisitsUntilConversion( string $segment = '', string $idGoal = '', array $optional = [] ): bool|array {
+    public function getVisitsUntilConversion( string $segment = '', string $idGoal = '', array $optional = [] ): Response {
         return $this->request( 'Goals.getVisitsUntilConversion', [
             'segment' => $segment,
             'idGoal'  => $idGoal,

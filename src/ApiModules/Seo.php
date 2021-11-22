@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Seo {
 
@@ -19,10 +20,10 @@ trait Seo {
      * @param string $url
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSeoRank( string $url, array $optional = [] ): array|bool|null {
+    public function getSeoRank( string $url, array $optional = [] ): Response {
         return $this->request( 'SEO.getRank', [
             'url' => $url,
         ], $optional );

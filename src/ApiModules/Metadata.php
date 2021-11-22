@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Metadata {
 
@@ -17,10 +18,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMatomoVersion( array $optional = [] ): array|bool|null {
+    public function getMatomoVersion( array $optional = [] ): Response {
         return $this->request( 'API.getMatomoVersion', [], $optional );
     }
 
@@ -29,10 +30,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getIpFromHeader( array $optional = [] ): array|bool|null {
+    public function getIpFromHeader( array $optional = [] ): Response {
         return $this->request( 'API.getIpFromHeader', [], $optional );
     }
 
@@ -41,10 +42,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSettings( array $optional = [] ): array|bool|null {
+    public function getSettings( array $optional = [] ): Response {
         return $this->request( 'API.getSettings', [], $optional );
     }
 
@@ -53,10 +54,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultMetricTranslations( array $optional = [] ): array|bool|null {
+    public function getDefaultMetricTranslations( array $optional = [] ): Response {
         return $this->request( 'API.getDefaultMetricTranslations', [], $optional );
     }
 
@@ -65,10 +66,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultMetrics( array $optional = [] ): array|bool|null {
+    public function getDefaultMetrics( array $optional = [] ): Response {
         return $this->request( 'API.getDefaultMetrics', [], $optional );
     }
 
@@ -77,10 +78,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultProcessedMetrics( array $optional = [] ): array|bool|null {
+    public function getDefaultProcessedMetrics( array $optional = [] ): Response {
         return $this->request( 'API.getDefaultProcessedMetrics', [], $optional );
     }
 
@@ -89,10 +90,10 @@ trait Metadata {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDefaultMetricsDocumentation( array $optional = [] ): array|bool|null {
+    public function getDefaultMetricsDocumentation( array $optional = [] ): Response {
         return $this->request( 'API.getDefaultMetricsDocumentation', [], $optional );
     }
 
@@ -102,10 +103,10 @@ trait Metadata {
      * @param array $sites Array with the ID's of the sites
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSegmentsMetadata( array $sites = [], array $optional = [] ): array|bool|null {
+    public function getSegmentsMetadata( array $sites = [], array $optional = [] ): Response {
         return $this->request( 'API.getSegmentsMetadata', [
             'idSites' => $sites
         ], $optional );
@@ -117,10 +118,10 @@ trait Metadata {
      * @param bool $pathOnly Return the url (false) or the absolute path (true)
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getLogoUrl( bool $pathOnly, array $optional = [] ): array|bool|null {
+    public function getLogoUrl( bool $pathOnly, array $optional = [] ): Response {
         return $this->request( 'API.getLogoUrl', [
             'pathOnly' => $pathOnly
         ], $optional );
@@ -132,10 +133,10 @@ trait Metadata {
      * @param bool $pathOnly Return the url (false) or the absolute path (true)
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getHeaderLogoUrl( bool $pathOnly, array $optional = [] ): array|bool|null {
+    public function getHeaderLogoUrl( bool $pathOnly, array $optional = [] ): Response {
         return $this->request( 'API.getHeaderLogoUrl', [
             'pathOnly' => $pathOnly
         ], $optional );
@@ -149,10 +150,10 @@ trait Metadata {
      * @param array $apiParameters Parameters
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMetadata( string $apiModule, string $apiAction, array $apiParameters = [], array $optional = [] ): array|bool|null {
+    public function getMetadata( string $apiModule, string $apiAction, array $apiParameters = [], array $optional = [] ): Response {
         return $this->request( 'API.getMetadata', [
             'apiModule'     => $apiModule,
             'apiAction'     => $apiAction,
@@ -168,7 +169,7 @@ trait Metadata {
      * @param string $showSubtableReports
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getReportMetadata(
@@ -176,7 +177,7 @@ trait Metadata {
         string $hideMetricsDoc = '',
         string $showSubtableReports = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'API.getReportMetadata', [
             'idSites'             => $idSites,
             'hideMetricsDoc'      => $hideMetricsDoc,
@@ -196,7 +197,7 @@ trait Metadata {
      * @param string $hideMetricsDoc
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getProcessedReport(
@@ -208,7 +209,7 @@ trait Metadata {
         bool|string $showTimer = '1',
         string $hideMetricsDoc = '',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'API.getProcessedReport', [
             'apiModule'      => $apiModule,
             'apiAction'      => $apiAction,
@@ -227,10 +228,10 @@ trait Metadata {
      * @param string $columns
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getApi( string $segment = '', string $columns = '', array $optional = [] ): array|bool|null {
+    public function getApi( string $segment = '', string $columns = '', array $optional = [] ): Response {
         return $this->request( 'API.get', [
             'segment' => $segment,
             'columns' => $columns,
@@ -249,7 +250,7 @@ trait Metadata {
      * @param string $labelUseAbsoluteUrl
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getRowEvolution(
@@ -261,7 +262,7 @@ trait Metadata {
         string $legendAppendMetric = '1',
         string $labelUseAbsoluteUrl = '1',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'API.getRowEvolution', [
             'apiModule'           => $apiModule,
             'apiAction'           => $apiAction,
@@ -281,10 +282,10 @@ trait Metadata {
      * @param array $methods
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getBulkRequest( array $methods = [], array $optional = [] ): array|bool|null {
+    public function getBulkRequest( array $methods = [], array $optional = [] ): Response {
         $urls = [];
 
         foreach ( $methods as $key => $method ) {
@@ -297,20 +298,20 @@ trait Metadata {
     /**
      * Get a list of available widgets.
      *
-     * @return array|bool|null
+     * @return Response
      * @throws RequestException
      */
-    public function getWidgetMetadata(): array|bool|null {
+    public function getWidgetMetadata(): Response {
         return $this->request( 'API.getWidgetMetadata' );
     }
 
     /**
      * Get a list of all available pages that exist including the widgets they include.
      *
-     * @return array|bool|null
+     * @return Response
      * @throws RequestException
      */
-    public function getReportPagesMetadata(): array|bool|null {
+    public function getReportPagesMetadata(): Response {
         return $this->request( 'API.getReportPagesMetadata' );
     }
 
@@ -320,10 +321,10 @@ trait Metadata {
      * @param string $segmentName
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSuggestedValuesForSegment( string $segmentName, array $optional = [] ): array|bool|null {
+    public function getSuggestedValuesForSegment( string $segmentName, array $optional = [] ): Response {
         return $this->request( 'API.getSuggestedValuesForSegment', [
             'segmentName' => $segmentName,
         ], $optional );

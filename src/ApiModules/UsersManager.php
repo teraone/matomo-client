@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait UsersManager {
 
@@ -21,10 +22,10 @@ trait UsersManager {
      * @param string $preferenceValue
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setUserPreference( string $userLogin, string $preferenceName, string $preferenceValue, array $optional = [] ): array|bool|null {
+    public function setUserPreference( string $userLogin, string $preferenceName, string $preferenceValue, array $optional = [] ): Response {
         return $this->request( 'UsersManager.setUserPreference', [
             'userLogin'       => $userLogin,
             'preferenceName'  => $preferenceName,
@@ -39,10 +40,10 @@ trait UsersManager {
      * @param string $preferenceName
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserPreference( string $userLogin, string $preferenceName, array $optional = [] ): array|bool|null {
+    public function getUserPreference( string $userLogin, string $preferenceName, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUserPreference', [
             'userLogin'      => $userLogin,
             'preferenceName' => $preferenceName,
@@ -55,10 +56,10 @@ trait UsersManager {
      * @param string $userLogins Comma separated list with usernames
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsers( string $userLogins = '', array $optional = [] ): array|bool|null {
+    public function getUsers( string $userLogins = '', array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsers', [
             'userLogins' => $userLogins,
         ], $optional );
@@ -69,10 +70,10 @@ trait UsersManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersLogin( array $optional = [] ): array|bool|null {
+    public function getUsersLogin( array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsersLogin', [], $optional );
     }
 
@@ -82,10 +83,10 @@ trait UsersManager {
      * @param string $access
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersSitesFromAccess( string $access, array $optional = [] ): array|bool|null {
+    public function getUsersSitesFromAccess( string $access, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsersSitesFromAccess', [
             'access' => $access,
         ], $optional );
@@ -96,10 +97,10 @@ trait UsersManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersAccess( array $optional = [] ): array|bool|null {
+    public function getUsersAccess( array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsersAccessFromSite', [], $optional );
     }
 
@@ -109,10 +110,10 @@ trait UsersManager {
      * @param string $access
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersWithSiteAccess( string $access, array $optional = [] ): array|bool|null {
+    public function getUsersWithSiteAccess( string $access, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsersWithSiteAccess', [
             'access' => $access,
         ], $optional );
@@ -124,10 +125,10 @@ trait UsersManager {
      * @param string $userLogin Username
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSitesAccessFromUser( string $userLogin, array $optional = [] ): array|bool|null {
+    public function getSitesAccessFromUser( string $userLogin, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getSitesAccessFromUser', [
             'userLogin' => $userLogin,
         ], $optional );
@@ -139,10 +140,10 @@ trait UsersManager {
      * @param string $userLogin Username
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUser( string $userLogin, array $optional = [] ): array|bool|null {
+    public function getUser( string $userLogin, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUser', [
             'userLogin' => $userLogin,
         ], $optional );
@@ -154,10 +155,10 @@ trait UsersManager {
      * @param string $userEmail
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserByEmail( string $userEmail, array $optional = [] ): array|bool|null {
+    public function getUserByEmail( string $userEmail, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUserByEmail', [
             'userEmail' => $userEmail,
         ], $optional );
@@ -172,10 +173,10 @@ trait UsersManager {
      * @param string $alias
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function addUser( string $userLogin, string $password, string $email, string $alias = '', array $optional = [] ): array|bool|null {
+    public function addUser( string $userLogin, string $password, string $email, string $alias = '', array $optional = [] ): Response {
         return $this->request( 'UsersManager.addUser', [
             'userLogin' => $userLogin,
             'password'  => $password,
@@ -191,10 +192,10 @@ trait UsersManager {
      * @param int $hasSuperUserAccess
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setSuperUserAccess( string $userLogin, int $hasSuperUserAccess, array $optional = [] ): array|bool|null {
+    public function setSuperUserAccess( string $userLogin, int $hasSuperUserAccess, array $optional = [] ): Response {
         return $this->request( 'UsersManager.setSuperUserAccess', [
             'userLogin'          => $userLogin,
             'hasSuperUserAccess' => $hasSuperUserAccess,
@@ -206,10 +207,10 @@ trait UsersManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function hasSuperUserAccess( array $optional = [] ): array|bool|null {
+    public function hasSuperUserAccess( array $optional = [] ): Response {
         return $this->request( 'UsersManager.hasSuperUserAccess', [], $optional );
     }
 
@@ -218,10 +219,10 @@ trait UsersManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersHavingSuperUserAccess( array $optional = [] ): array|bool|null {
+    public function getUsersHavingSuperUserAccess( array $optional = [] ): Response {
         return $this->request( 'UsersManager.getUsersHavingSuperUserAccess', [], $optional );
     }
 
@@ -234,10 +235,10 @@ trait UsersManager {
      * @param string $alias
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function updateUser( string $userLogin, string $password = '', string $email = '', string $alias = '', array $optional = [] ): array|bool|null {
+    public function updateUser( string $userLogin, string $password = '', string $email = '', string $alias = '', array $optional = [] ): Response {
         return $this->request( 'UsersManager.updateUser', [
             'userLogin' => $userLogin,
             'password'  => $password,
@@ -252,10 +253,10 @@ trait UsersManager {
      * @param string $userLogin Username
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function deleteUser( string $userLogin, array $optional = [] ): array|bool|null {
+    public function deleteUser( string $userLogin, array $optional = [] ): Response {
         return $this->request( 'UsersManager.deleteUser', [
             'userLogin' => $userLogin,
         ], $optional );
@@ -267,10 +268,10 @@ trait UsersManager {
      * @param string $userLogin
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function userExists( string $userLogin, array $optional = [] ): array|bool|null {
+    public function userExists( string $userLogin, array $optional = [] ): Response {
         return $this->request( 'UsersManager.userExists', [
             'userLogin' => $userLogin,
         ], $optional );
@@ -282,10 +283,10 @@ trait UsersManager {
      * @param string $userEmail
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function userEmailExists( string $userEmail, array $optional = [] ): array|bool|null {
+    public function userEmailExists( string $userEmail, array $optional = [] ): Response {
         return $this->request( 'UsersManager.userEmailExists', [
             'userEmail' => $userEmail,
         ], $optional );
@@ -299,10 +300,10 @@ trait UsersManager {
      * @param array $idSites
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setUserAccess( string $userLogin, string $access, array $idSites, array $optional = [] ): array|bool|null {
+    public function setUserAccess( string $userLogin, string $access, array $idSites, array $optional = [] ): Response {
         return $this->request( 'UsersManager.setUserAccess', [
             'userLogin' => $userLogin,
             'access'    => $access,
@@ -317,10 +318,10 @@ trait UsersManager {
      * @param string $md5Password Password in clear text
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTokenAuth( string $userLogin, string $md5Password, array $optional = [] ): array|bool|null {
+    public function getTokenAuth( string $userLogin, string $md5Password, array $optional = [] ): Response {
         return $this->request( 'UsersManager.getTokenAuth', [
             'userLogin'   => $userLogin,
             'md5Password' => md5( $md5Password ),

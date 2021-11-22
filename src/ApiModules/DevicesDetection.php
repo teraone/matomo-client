@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait DevicesDetection {
 
@@ -18,10 +19,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDeviceType( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getDeviceType( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getType', [
             'segment' => $segment,
         ], $optional );
@@ -33,10 +34,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDeviceBrand( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getDeviceBrand( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getBrand', [
             'segment' => $segment,
         ], $optional );
@@ -48,10 +49,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getDeviceModel( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getDeviceModel( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getModel', [
             'segment' => $segment,
         ], $optional );
@@ -63,10 +64,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOSFamilies( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getOSFamilies( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getOsFamilies', [
             'segment' => $segment,
         ], $optional );
@@ -78,10 +79,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getOsVersions( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getOsVersions( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getOsVersions', [
             'segment' => $segment,
         ], $optional );
@@ -93,10 +94,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getBrowsers( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getBrowsers( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getBrowsers', [
             'segment' => $segment,
         ], $optional );
@@ -108,10 +109,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getBrowserVersions( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getBrowserVersions( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getBrowserVersions', [
             'segment' => $segment,
         ], $optional );
@@ -123,10 +124,10 @@ trait DevicesDetection {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getBrowserEngines( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getBrowserEngines( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'DevicesDetection.getBrowserEngines', [
             'segment' => $segment,
         ], $optional );

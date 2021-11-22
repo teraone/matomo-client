@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Live {
 
@@ -20,10 +21,10 @@ trait Live {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCounters( int $lastMinutes = 60, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCounters( int $lastMinutes = 60, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Live.getCounters', [
             'lastMinutes' => $lastMinutes,
             'segment'     => $segment,
@@ -38,12 +39,12 @@ trait Live {
      * @param string $doNotFetchActions
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      * @internal param int $filterLimit
      * @internal param int $maxIdVisit
      */
-    public function getLastVisitsDetails( string $segment = '', string $minTimestamp = '', string $doNotFetchActions = '', array $optional = [] ): array|bool|null {
+    public function getLastVisitsDetails( string $segment = '', string $minTimestamp = '', string $doNotFetchActions = '', array $optional = [] ): Response {
         return $this->request( 'Live.getLastVisitsDetails', [
             'segment'           => $segment,
             'minTimestamp'      => $minTimestamp,
@@ -58,10 +59,10 @@ trait Live {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getVisitorProfile( string $visitorId = '', string $segment = '', array $optional = [] ): array|bool|null {
+    public function getVisitorProfile( string $visitorId = '', string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Live.getVisitorProfile', [
             'visitorId' => $visitorId,
             'segment'   => $segment,
@@ -74,10 +75,10 @@ trait Live {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMostRecentVisitorId( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getMostRecentVisitorId( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Live.getMostRecentVisitorId', [
             'segment' => $segment,
         ], $optional );
@@ -89,10 +90,10 @@ trait Live {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUsersById( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUsersById( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'UserId.getUsers', [
             'segment' => $segment,
         ], $optional );

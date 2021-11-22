@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait Provider {
 
@@ -18,10 +19,10 @@ trait Provider {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getProvider( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getProvider( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Provider.getProvider', [
             'segment' => $segment,
         ], $optional );

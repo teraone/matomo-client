@@ -1,4 +1,4 @@
-# A simple Matomo API Client for Laravel.
+# A simple Matomo API Client for Laravel. (Work in Progress - not ready for production use)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
 [![Total Downloads](https://img.shields.io/packagist/dt/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
@@ -25,6 +25,7 @@ php artisan vendor:publish
 ## Usage
 
 To keep things simple, only JSON is supported. 
+All Methods return a `Illuminate\Http\Client\Response`
 
 ```php
 
@@ -34,13 +35,15 @@ $matomoClient = app()->get('matomo-client');
 // get Visits of this month
 $matomo->setDate(now(), MatomoClient::PERIOD_MONTH)
        ->setFilterLimit(10) // defaults to 100
-       ->getVisits();
+       ->getVisits()
+       ->json();
 
 
 
 // get Event Names of the last week
 $matomo->setDate(now()->subWeek(), MatomoClient::PERIOD_RANGE, now())
-        ->getEventName();
+        ->getEventName()
+        ->json();
 
 ```
 

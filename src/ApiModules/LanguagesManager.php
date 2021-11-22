@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait LanguagesManager {
 
@@ -18,10 +19,10 @@ trait LanguagesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function canGenerateInsights( array $optional = [] ): array|bool|null {
+    public function canGenerateInsights( array $optional = [] ): Response {
         return $this->request( 'Insights.canGenerateInsights', [], $optional );
     }
 
@@ -31,10 +32,10 @@ trait LanguagesManager {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getInsightsOverview( string $segment, array $optional = [] ): array|bool|null {
+    public function getInsightsOverview( string $segment, array $optional = [] ): Response {
         return $this->request( 'Insights.getInsightsOverview', [
             'segment' => $segment,
         ], $optional );
@@ -46,10 +47,10 @@ trait LanguagesManager {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMoversAndShakersOverview( string $segment, array $optional = [] ): array|bool|null {
+    public function getMoversAndShakersOverview( string $segment, array $optional = [] ): Response {
         return $this->request( 'Insights.getMoversAndShakersOverview', [
             'segment' => $segment,
         ], $optional );
@@ -65,7 +66,7 @@ trait LanguagesManager {
      * @param int $limitDecreaser
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getMoversAndShakers(
@@ -75,7 +76,7 @@ trait LanguagesManager {
         int $limitIncreaser = 4,
         int $limitDecreaser = 4,
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'Insights.getMoversAndShakers', [
             'reportUniqueId'     => $reportUniqueId,
             'segment'            => $segment,
@@ -99,7 +100,7 @@ trait LanguagesManager {
      * @param string $orderBy
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
     public function getInsights(
@@ -113,7 +114,7 @@ trait LanguagesManager {
         int $comparedToXPeriods = 1,
         string $orderBy = 'absolute',
         array $optional = []
-    ): array|bool|null {
+    ): Response {
         return $this->request( 'Insights.getInsights', [
             'reportUniqueId'     => $reportUniqueId,
             'segment'            => $segment,
@@ -138,10 +139,10 @@ trait LanguagesManager {
      * @param string $languageCode
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getLanguageAvailable( string $languageCode, array $optional = [] ): array|bool|null {
+    public function getLanguageAvailable( string $languageCode, array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.isLanguageAvailable', [
             'languageCode' => $languageCode,
         ], $optional );
@@ -152,10 +153,10 @@ trait LanguagesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAvailableLanguages( array $optional = [] ): array|bool|null {
+    public function getAvailableLanguages( array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.getAvailableLanguages', [], $optional );
     }
 
@@ -164,10 +165,10 @@ trait LanguagesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAvailableLanguagesInfo( array $optional = [] ): array|bool|null {
+    public function getAvailableLanguagesInfo( array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.getAvailableLanguagesInfo', [], $optional );
     }
 
@@ -176,10 +177,10 @@ trait LanguagesManager {
      *
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getAvailableLanguageNames( array $optional = [] ): array|bool|null {
+    public function getAvailableLanguageNames( array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.getAvailableLanguageNames', [], $optional );
     }
 
@@ -189,10 +190,10 @@ trait LanguagesManager {
      * @param string $languageCode
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getTranslations( string $languageCode, array $optional = [] ): array|bool|null {
+    public function getTranslations( string $languageCode, array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.getTranslationsForLanguage', [
             'languageCode' => $languageCode,
         ], $optional );
@@ -204,10 +205,10 @@ trait LanguagesManager {
      * @param string $login
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getLanguageForUser( string $login, array $optional = [] ): array|bool|null {
+    public function getLanguageForUser( string $login, array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.getLanguageForUser', [
             'login' => $login,
         ], $optional );
@@ -220,10 +221,10 @@ trait LanguagesManager {
      * @param string $languageCode
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function setLanguageForUser( string $login, string $languageCode, array $optional = [] ): array|bool|null {
+    public function setLanguageForUser( string $login, string $languageCode, array $optional = [] ): Response {
         return $this->request( 'LanguagesManager.setLanguageForUser', [
             'login'        => $login,
             'languageCode' => $languageCode,

@@ -3,6 +3,7 @@
 namespace Teraone\MatomoClient\ApiModules;
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait VisitsSummary {
 
@@ -19,10 +20,10 @@ trait VisitsSummary {
      * @param string $columns
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getVisitsSummary( string $segment = '', string $columns = '', array $optional = [] ): array|bool|null {
+    public function getVisitsSummary( string $segment = '', string $columns = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.get', [
             'segment' => $segment,
             'columns' => $columns,
@@ -35,10 +36,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getVisits( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getVisits( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getVisits', [
             'segment' => $segment,
         ], $optional );
@@ -50,10 +51,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUniqueVisitors( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUniqueVisitors( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getUniqueVisitors', [
             'segment' => $segment,
         ], $optional );
@@ -65,10 +66,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getUserVisitors( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getUserVisitors( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getUsers', [
             'segment' => $segment,
         ], $optional );
@@ -80,10 +81,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getActions( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getActions( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getActions', [
             'segment' => $segment,
         ], $optional );
@@ -95,10 +96,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getMaxActions( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getMaxActions( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getMaxActions', [
             'segment' => $segment,
         ], $optional );
@@ -110,10 +111,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getBounceCount( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getBounceCount( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getBounceCount', [
             'segment' => $segment,
         ], $optional );
@@ -125,10 +126,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getVisitsConverted( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getVisitsConverted( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getVisitsConverted', [
             'segment' => $segment,
         ], $optional );
@@ -140,10 +141,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSumVisitsLength( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSumVisitsLength( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getSumVisitsLength', [
             'segment' => $segment,
         ], $optional );
@@ -155,10 +156,10 @@ trait VisitsSummary {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getSumVisitsLengthPretty( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getSumVisitsLengthPretty( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'VisitsSummary.getSumVisitsLengthPretty', [
             'segment' => $segment,
         ], $optional );

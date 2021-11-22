@@ -4,6 +4,7 @@ namespace Teraone\MatomoClient\ApiModules;
 
 
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 
 trait CustomVariables {
 
@@ -19,10 +20,10 @@ trait CustomVariables {
      * @param string $segment
      * @param array $optional
      *
-     * @return array|bool|null
+     * @return Response
      * @throws RequestException
      */
-    public function getCustomVariables( string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCustomVariables( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'CustomVariables.getCustomVariables', [
             'segment' => $segment,
         ], $optional );
@@ -35,10 +36,10 @@ trait CustomVariables {
      * @param string $segment
      * @param array $optional
      *
-     * @return array | boolean | null
+     * @return Response
      * @throws RequestException
      */
-    public function getCustomVariable( int $idSubtable, string $segment = '', array $optional = [] ): array|bool|null {
+    public function getCustomVariable( int $idSubtable, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'CustomVariables.getCustomVariablesValuesFromNameId', [
             'idSubtable' => $idSubtable,
             'segment'    => $segment,
