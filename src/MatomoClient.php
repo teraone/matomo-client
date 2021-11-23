@@ -3,6 +3,7 @@
 namespace Teraone\MatomoClient;
 
 use DateTime;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
@@ -110,9 +111,25 @@ class MatomoClient {
 
     private Carbon|null $rangeEnd = null;
 
+    private PendingRequest | Http $pendingRequest;
+
     public function __construct() {
 
         $this->rangeStart = now();
+        $this->pendingRequest = new Http();
+    }
+
+    /**
+     * Use this function to set custom headers. For example $client->setBaseRequest(Http::withHeaders(...))
+     *
+     * @param PendingRequest $pendingRequest
+     *
+     * @return $this
+     */
+    public function setBaseRequest(PendingRequest $pendingRequest):self {
+        $this->http = $pendingRequest;
+
+        return $this;
     }
 
     /**
@@ -217,7 +234,7 @@ class MatomoClient {
             Log::channel( config( 'matomo-client.log_channel' ) )->debug( '[MatomoClient] Sending request', [ 'url' => Str::replace( config( 'matomo-client.token' ), '{TOKEN_REDACTED}', $url ) ] );
         }
 
-        $response = Http::get( $url );
+        $response = $this->pendingRequest->get( $url );
 
         if ( config( 'matomo-client.log_enabled' ) ) {
             Log::channel( config( 'matomo-client.log_channel' ) )->debug( '[MatomoClient] Response', [
