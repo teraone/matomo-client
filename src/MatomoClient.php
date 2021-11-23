@@ -127,7 +127,7 @@ class MatomoClient {
      * @return $this
      */
     public function setBaseRequest(PendingRequest $pendingRequest):self {
-        $this->http = $pendingRequest;
+        $this->pendingRequest = $pendingRequest;
 
         return $this;
     }
