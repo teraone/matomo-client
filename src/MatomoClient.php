@@ -146,18 +146,14 @@ class MatomoClient {
         $this->rangeStart = Carbon::make($from);
 
         $this->setPeriod( $period );
-        if ( $this->period === self::PERIOD_RANGE ) {
 
-            if ( $until === null ) {
-                // default to today
-                $this->rangeEnd = null;
-            } else {
-                if ( $until < $from ) {
-                    throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
-                }
-                $this->setPeriod( self::PERIOD_RANGE );
-                $this->rangeEnd = Carbon::make($until);
+        if ( $until === null ) {
+            $this->rangeEnd = null;
+        } else {
+            if ( $until < $from ) {
+                throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
             }
+            $this->rangeEnd = Carbon::make($until);
         }
 
         return $this;
@@ -290,14 +286,6 @@ class MatomoClient {
                       'filter_limit' => $this->filterLimit
                   ] + $params;
 
-        foreach ( $params as $key => $value ) {
-            if ( is_array( $value ) ) {
-                $params[ $key ] = urlencode( implode( ',', $value ) );
-            } else {
-                $params[ $key ] = urlencode( $value );
-            }
-        }
-
         if ( ! empty( $this->rangeEnd ) ) {
             $params = $params + [
                     'date' => $this->rangeStart->format( 'Y-m-d' ) . ',' . $this->rangeEnd->format( 'Y-m-d' ),
@@ -308,24 +296,7 @@ class MatomoClient {
                 ];
         }
 
-        $url = config( 'matomo-client.site_url' );
-
-        $i = 0;
-        foreach ( $params as $param => $val ) {
-            if ( ! empty( $val ) ) {
-                $i ++;
-                if ( $i > 1 ) {
-                    $url .= '&';
-                } else {
-                    $url .= '?';
-                }
-
-                if ( is_array( $val ) ) {
-                    $val = implode( ',', $val );
-                }
-                $url .= $param . '=' . $val;
-            }
-        }
+        $url = config( 'matomo-client.site_url' ) . '?' . http_build_query($params);
 
         return $url;
     }
