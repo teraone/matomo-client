@@ -277,22 +277,18 @@ trait Metadata {
     /**
      * Get the result of multiple requests bundled together
      * Take as an argument an array of the API methods to send together
-     * For example, ['API.get', 'Action.get', 'DeviceDetection.getType']
+     * Takes an array of urls. You can generate these URLs with $matomoClient->parseUrl('methodName',  ['segment' => $segment])
      *
-     * @param array $methods
+     * @param array $urls
      * @param array $optional
      *
      * @return Response
      * @throws RequestException
      */
-    public function getBulkRequest( array $methods = [], array $optional = [] ): Response {
-        $urls = [];
+    public function getBulkRequest( array $urls = [], array $optional = [] ): Response {
+        $params = ['urls' => $urls] + $optional;
 
-        foreach ( $methods as $key => $method ) {
-            $urls[ 'urls[' . $key . ']' ] = urlencode( 'method=' . $method );
-        }
-
-        return $this->request( 'API.getBulkRequest', $urls, $optional );
+        return $this->request( 'API.getBulkRequest', $params );
     }
 
     /**

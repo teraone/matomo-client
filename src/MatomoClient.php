@@ -224,7 +224,7 @@ class MatomoClient {
      * @throws RequestException
      */
     private function request( string $method, array $params = [], array $optional = [] ): Response {
-        $url = $this->parseUrl( $method, $params + $optional );
+        $url = config( 'matomo-client.site_url' ) . $this->parseUrl( $method, $params + $optional );
 
         if ( config( 'matomo-client.log_enabled' ) ) {
             Log::channel( config( 'matomo-client.log_channel' ) )->debug( '[MatomoClient] Sending request', [ 'url' => Str::replace( config( 'matomo-client.token' ), '{TOKEN_REDACTED}', $url ) ] );
@@ -274,7 +274,7 @@ class MatomoClient {
      * @return string
      * @throws InvalidArgumentException
      */
-    private function parseUrl( string $method, array $params = [] ): string {
+    public function parseUrl( string $method, array $params = [] ): string {
         $params = [
                       'module'       => 'API',
                       'method'       => $method,
@@ -296,9 +296,8 @@ class MatomoClient {
                 ];
         }
 
-        $url = config( 'matomo-client.site_url' ) . '?' . http_build_query($params);
+        return  '?' . http_build_query($params);
 
-        return $url;
     }
 
 }
