@@ -23,7 +23,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getAction( string $segment = '', string $columns = '', array $optional = [] ): bool|array|null {
+    public function getAction( string $segment = '', string $columns = '', array $optional = [] ): Response {
         return $this->request( 'Actions.get', [
             'segment' => $segment,
             'columns' => $columns,
@@ -39,7 +39,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getPageTitlesFollowingSiteSearch( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getPageTitlesFollowingSiteSearch( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageTitlesFollowingSiteSearch', [
             'segment' => $segment,
         ], $optional );
@@ -54,7 +54,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getEntryPageUrls( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getEntryPageUrls( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getEntryPageUrls', [
             'segment' => $segment,
         ], $optional );
@@ -70,7 +70,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getPageUrl( string $pageUrl, string $segment = '', array $optional = [] ): bool|array|null {
+    public function getPageUrl( string $pageUrl, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageUrl', [
             'pageUrl' => $pageUrl,
             'segment' => $segment,
@@ -86,7 +86,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getPageTitles( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getPageTitles( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageTitles', [
             'segment' => $segment,
         ], $optional );
@@ -101,7 +101,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getEntryPageTitles( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getEntryPageTitles( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getEntryPageTitles', [
             'segment' => $segment,
         ], $optional );
@@ -116,7 +116,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getExitPageTitles( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getExitPageTitles( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getExitPageTitles', [
             'segment' => $segment,
         ], $optional );
@@ -132,7 +132,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getPageTitle( string $pageName, string $segment = '', array $optional = [] ): bool|array|null {
+    public function getPageTitle( string $pageName, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageTitle', [
             'pageName' => $pageName,
             'segment'  => $segment,
@@ -148,7 +148,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getDownloads( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getDownloads( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getDownloads', [
             'segment' => $segment,
         ], $optional );
@@ -164,7 +164,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getDownload( string $downloadUrl, string $segment = '', array $optional = [] ): bool|array|null {
+    public function getDownload( string $downloadUrl, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getDownload', [
             'downloadUrl' => $downloadUrl,
             'segment'     => $segment,
@@ -180,7 +180,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getOutlinks( string $segment = '', array $optional = [] ): bool|array|null {
+    public function getOutlinks( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getOutlinks', [
             'segment' => $segment,
         ], $optional );
@@ -196,7 +196,7 @@ trait Actions {
      * @return array | boolean | null
      * @throws RequestException
      */
-    public function getOutlink( string $outlinkUrl, string $segment = '', array $optional = [] ): bool|array|null {
+    public function getOutlink( string $outlinkUrl, string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getOutlink', [
             'outlinkUrl' => $outlinkUrl,
             'segment'    => $segment,
@@ -269,10 +269,10 @@ trait Actions {
      * @param string $segment
      * @param array $optional
      *
-     * @return bool|array|null
+     * @return Response
      * @throws RequestException
      */
-    protected function getPageUrlsFollowingSiteSearch( string $segment = '', array $optional = [] ): bool|array|null {
+    protected function getPageUrlsFollowingSiteSearch( string $segment = '', array $optional = [] ): Response {
         return $this->request( 'Actions.getPageUrlsFollowingSiteSearch', [
             'segment' => $segment,
         ], $optional );
