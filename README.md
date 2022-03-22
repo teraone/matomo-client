@@ -1,4 +1,4 @@
-# A simple Matomo API Client for Laravel. (Work in Progress - not ready for production use)
+# A simple Matomo API Client for Laravel.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
 [![Total Downloads](https://img.shields.io/packagist/dt/teraone/matomo-client.svg?style=flat-square)](https://packagist.org/packages/teraone/matomo-client)
