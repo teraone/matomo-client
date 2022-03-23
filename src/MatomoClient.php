@@ -16,6 +16,7 @@ use Teraone\MatomoClient\ApiModules\Annotations;
 use Teraone\MatomoClient\ApiModules\Contents;
 use Teraone\MatomoClient\ApiModules\CustomAlerts;
 use Teraone\MatomoClient\ApiModules\CustomDimensions;
+use Teraone\MatomoClient\ApiModules\CustomReports;
 use Teraone\MatomoClient\ApiModules\CustomVariables;
 use Teraone\MatomoClient\ApiModules\Dashboard;
 use Teraone\MatomoClient\ApiModules\DevicePlugins;
@@ -54,6 +55,7 @@ class MatomoClient {
         Contents,
         CustomAlerts,
         CustomDimensions,
+        CustomReports,
         CustomVariables,
         Dashboard,
         DevicePlugins,
