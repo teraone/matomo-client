@@ -25,6 +25,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Matomo Site Report Timezone
+    |--------------------------------------------------------------------------
+    |
+    | The timezone in which Matomo shows your reports.
+    | Must match the timezone setting of the Matomo Site
+    |
+    */
+    'site_timezone'     => env( 'MATOMO_SITE_TIMEZONE', 'Europe/Berlin'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Matomo Token
     |--------------------------------------------------------------------------
     |

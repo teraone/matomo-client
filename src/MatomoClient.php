@@ -290,11 +290,11 @@ class MatomoClient {
 
         if ( ! empty( $this->rangeEnd ) ) {
             $params = $params + [
-                    'date' => $this->rangeStart->format( 'Y-m-d' ) . ',' . $this->rangeEnd->format( 'Y-m-d' ),
+                    'date' => $this->rangeStart->timezone(config('matomo-client.site_timezone'))->format( 'Y-m-d' ) . ',' . $this->rangeEnd->format( 'Y-m-d' ),
                 ];
         } else {
             $params = $params + [
-                    'date' => $this->rangeStart->format( 'Y-m-d' ),
+                    'date' => $this->rangeStart->timezone(config('matomo-client.site_timezone'))->format( 'Y-m-d' ),
                 ];
         }
 
