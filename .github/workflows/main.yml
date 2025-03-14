@@ -1,4 +1,4 @@
-name: run-tests
+name: check-composer install
 
 on:
     push:
@@ -43,5 +43,6 @@ jobs:
               run: |
                   composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
                   composer update --${{ matrix.stability }} --prefer-dist --no-interaction
-            - name: Execute tests
-              run: vendor/bin/phpunit
+           #  no tests here :(
+           # - name: Execute tests
+           #   run: vendor/bin/phpunit
