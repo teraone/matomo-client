@@ -3,6 +3,7 @@
 namespace Teraone\MatomoClient;
 
 use DateTime;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
@@ -88,7 +89,7 @@ class MatomoClient {
         VisitsSummary,
         VisitTime;
 
-    const PERIODS = [
+    const array PERIODS = [
         self::PERIOD_DAY,
         self::PERIOD_MONTH,
         self::PERIOD_WEEK,
@@ -96,11 +97,11 @@ class MatomoClient {
         self::PERIOD_RANGE
     ];
 
-    const PERIOD_DAY = 'day';
-    const PERIOD_WEEK = 'week';
-    const PERIOD_MONTH = 'month';
-    const PERIOD_YEAR = 'year';
-    const PERIOD_RANGE = 'range';
+    const string PERIOD_DAY = 'day';
+    const string PERIOD_WEEK = 'week';
+    const string PERIOD_MONTH = 'month';
+    const string PERIOD_YEAR = 'year';
+    const string PERIOD_RANGE = 'range';
 
 
     private string $period = self::PERIOD_DAY;
@@ -150,13 +151,13 @@ class MatomoClient {
         $this->setPeriod( $period );
 
         if ( $until === null ) {
-            $this->rangeEnd = null;
-        } else {
-            if ( $until < $from ) {
-                throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
-            }
-            $this->rangeEnd = Carbon::make($until);
+            throw  new InvalidArgumentException( 'Invalid Range: $until must be given' );
         }
+        if ( $until < $from ) {
+            throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
+        }
+
+        $this->rangeEnd = Carbon::make($until);
 
         return $this;
     }
@@ -221,9 +222,7 @@ class MatomoClient {
      * @param array $optional Optional arguments for this api call
      *
      * @return Response
-     * @throws RequestException
-     * @throws RequestException
-     * @throws RequestException
+     * @throws RequestException|ConnectionException
      */
     private function request( string $method, array $params = [], array $optional = [] ): Response {
         $url = config( 'matomo-client.site_url' ) . $this->parseUrl( $method, $params + $optional );
