@@ -151,13 +151,13 @@ class MatomoClient {
         $this->setPeriod( $period );
 
         if ( $until === null ) {
-            throw  new InvalidArgumentException( 'Invalid Range: $until must be given' );
+            $this->rangeEnd = null;
+        } else {
+            if ( $until < $from ) {
+                throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
+            }
+            $this->rangeEnd = Carbon::make($until);
         }
-        if ( $until < $from ) {
-            throw  new InvalidArgumentException( 'Invalid Range: $until must not be earlier then $from' );
-        }
-
-        $this->rangeEnd = Carbon::make($until);
 
         return $this;
     }
